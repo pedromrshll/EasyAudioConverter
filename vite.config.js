@@ -3,8 +3,9 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
+  base: '/EasyAudioConverter/', // <--- This is the added line to fix GitHub Pages deployment
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -21,6 +22,7 @@ export default defineConfig({
   // Optimize for production
   build: {
     target: 'esnext',
+    outDir: 'docs', // <--- This line makes Vite output to /docs for GitHub Pages
     rollupOptions: {
       output: {
         manualChunks: {
